@@ -1,29 +1,33 @@
-function photographerFactory(data) {
-  const { name, portrait, city, price, tagline, id } = data;
-
-  const picture = `assets/photographers/${portrait}`;
-
-  // récupère lélément article avec les données name, city, tagline & price
-  function getUserCardDOM() {
-      const article = document.createElement( 'article' );
-      const img = document.createElement( 'img' );
-      img.setAttribute("src", picture)
-      const h2 = document.createElement( 'h2' );
-      h2.textContent = name;
-      const pCity = document.createElement( 'p' );
-      pCity.textContent = city;
-      const pTagline = document.createElement( 'p' );
-      pTagline.textContent = tagline;
-      const pPrice = document.createElement( 'p' );
-      pPrice.textContent = price + " €/j";
-      article.appendChild(img);
-      article.appendChild(h2);
-      article.appendChild(pCity);
-      article.appendChild(pTagline);
-      article.appendChild(pPrice);
-      console.log(article);
-      return (article);
+export class Photographer {
+  constructor(data) {
+    this._name = data.name
+    this._id = data.id
+    this._city = data.city
+    this._country = data.country
+    this._tagline = data.tagline
+    this._price = data.price
+    this._picture = data.portrait
   }
 
-  return { name, picture, city, price, tagline, id, getUserCardDOM }
+  get location()  {
+    return `${this._city}, ${this._country}`
+  }
+
+  get picture() {
+    return `../assets/photographers/${this._picture}`
+  }
+
+  get userCardDOM() {
+    return `
+      <a href="#" class="photographer_focus" aria-label="présentation du photographe ${this._name}">
+        <article>
+          <img src="../../assets/photographers/${this._picture}" alt="le photographe ${this._name}"></img>
+          <h2>${this._name}</h2>
+          <p class="location">${this.location}</p>
+          <p class="tagline">${this._tagline}</p>
+          <p class="price">${this._price}€/jour</p>
+        </article>
+      </a>
+       `
+  }
 }
