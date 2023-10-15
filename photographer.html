@@ -1,36 +1,87 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
-  </head>
-  <body>
-    <header>
-      <img src="assets/images/logo.png" class="logo" />
-    </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-      </div>
-    </main>
-    <div id="contact_modal">
-			<div class="modal">
+<html lang="fr">
+	<head>
+		<title>Fisheye</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="Fisheye, photographes freelance" />
+		<meta name="keywords" content="photographers, photographies, video" />
+
+		<!-- Styles, Icônes & Fonts -->
+		<link href="css/style.css" rel="stylesheet" type="text/css" />
+		<link rel="icon" type="image/png" href="assets/icons/favicon.png" />
+		<link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet" />
+		<script src="https://kit.fontawesome.com/fe6a60c3cf.js" crossorigin="anonymous"></script>
+
+	</head>
+
+	<body>
+		<!-- Header avec logo -->
+		<header>
+			<a href="index.html" class="photographers_focus">
+				<img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" />
+			</a>
+		</header>
+
+		<!-- Main body -->
+		<main id="main" aria-hidden="false">
+			<!-- sections photograph pour afficher les réalisations du photographe -->
+			<section id="photograph-header" class="photograph-header"></section>
+
+			<!-- panel de bas d'ecran avec nombre total de likes et taux journalier du photographe -->
+			<aside class="photograph-price-panel" aria-label="Tarif du photographe"></aside>
+
+			<!-- section tri de la galerie de photos et videos du photographe -->
+			<section class="photograph-gallery-sort">
+				<label for="photograph-gallery-select">Trier par</label>
+				<select id="photograph-gallery-select">
+					<option value="Popularité">Popularité</option>
+					<option value="Date">Date</option>
+					<option value="Titre">Titre</option>
+				</select>
+			</section>
+
+			<!-- section galerie des photos et videos du photographe concerné -->
+			<section class="photograph-gallery"></section>
+		</main>
+
+		<!-- Formulaire de contact -->
+		<div id="contact_modal" aria-hidden="true">
+			<div class="modal" role="dialog" aria-labelledby="contactMe">
 				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
+					<h2 id="contactMe" class="modal_name">Contactez-moi</h2>
+					<img id="close_modal" src="assets/icons/close.svg" tabindex="0" alt="Fermer le formulaire"/>
+				</header>
+				<form id="formulaire" name="formulaire de contact" aria-label="formulaire de contact">
+					<div class="formData" data-error="Veuillez entrer au moins 2 caractères" data-error-visible="false">
+						<label for="firstname">Prénom</label>
+						<input type="text" id="firstname" name="firstname" minlength="2" required aria-required="true" aria-labelledby="firstname"/>
 					</div>
-          <button class="contact_button">Envoyer</button>
+					<div class="formData" data-error="Veuillez entrer au moins 2 caractères" data-error-visible="false">
+						<label for="lastname">Nom</label>
+						<input type="text" id="lastname" name="lastname" minlength="2" required aria-required="true" aria-labelledby="lastname"/>
+					</div>
+					<div class="formData" data-error="Veuillez respecter le format mail" data-error-visible="false">
+						<label for="email">E-mail</label>
+						<input type="email" id="email" name="email" aria-describedby="email" placeholder="example@domaine.fr" required aria-required="true" aria-labelledby="email"/>
+					</div>
+					<div class="formData" data-error="Veuillez respecter min 2 et max 255 caractères" data-error-visible="false">
+						<label for="message">Votre message</label>
+						<textarea id="message" name="message" class="textarea" minlength="2" maxlength="255" rows="4" required aria-required="true" aria-labelledby="message"></textarea>
+					</div>
+					<button type="submit" id="submit_button" class="submit_button" aria-label="Envoyer">Envoyer</button>
 				</form>
 			</div>
 		</div>
-    <script src="/scripts/utils/contactForm.js"></script>
-  </body>
+
+		<!-- Scripts -->
+		<script type="module" src="scripts/utils/contactForm.js" ></script>
+		<script type="module" src="scripts/utils/sort.js" ></script>
+
+		<script type="module" src="scripts/factories/photographer.js" ></script>
+		<script type="module" src="scripts/factories/media.js" ></script>
+    <script type="module" src="scripts/factories/likes.js" ></script>
+    <script type="module" src="scripts/factories/lightbox.js" ></script>
+    <script type="module" src="scripts/pages/photographer.js" ></script>
+	</body>
 </html>

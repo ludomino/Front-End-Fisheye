@@ -1,27 +1,38 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <title>Fisheye</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="description" content="Fisheye, photographes freelance"/>
-    <meta name="keywords" content="photographers, photographies, video"/>
+	<head>
+		<title>Fisheye - Accueil</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="Fisheye, photographes freelance" />
+		<meta name="keywords" content="photographers, photographies, videos" />
 
-    <link href="css/style.css" rel="stylesheet" type="text/css"/>
-    <link rel="icon" type="image/png" href="assets/icons/favicon.png"/>
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet"/>
+		<link href="css/style.css" rel="stylesheet" type="text/css" />
+		<link rel="icon" type="image/png" href="assets/icons/favicon.png" />
+		<link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet" />
+	</head>
 
-  </head>
-  <body>
-    <header>
-        <img src="assets/images/logo.png" class="logo" alt="logo Fisheye"/>
-        <h1>Nos photographes</h1>
-    </header>
-    <main id="main">
-        <div class="photographer_section"></div>
-    </main>
-    <script type="module" src="scripts/factories/photographer.js"></script>
-    <script type="module" src="scripts/pages/index.js"></script>
-    <script src="scripts/pages/photographer.js"></script>
-  </body>
+	<body>
+		<!-- Header avec logo -->
+		<header>
+			<!-- <a href="index.html" class="photographers_focus" aria-label="Go to Fisheye Home Page">
+				<img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" />
+			</a> -->
+
+      <a href="index.html" class="photographers_focus" aria-label="Go to Fisheye Home Page" role="link"> <!-- added role="link" -->
+        <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" />
+    </a>
+
+			<h1 aria-label="Nos photographes">Nos photographes</h1>
+		</header>
+
+		<!-- Main body section photographer affiche tous les photographes -->
+		<main id="main">
+			<section class="photographer_section" aria-label="Photographer Section"></section>
+		</main>
+
+		<script src="scripts/factories/photographer.js" type="module"></script>
+		<!-- <script src="scripts/utils/APIfetch.js" type="module"></script> -->
+		<script src="scripts/pages/index.js" type="module"></script>
+	</body>
 </html>
